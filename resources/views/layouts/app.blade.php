@@ -35,9 +35,16 @@
     </ul>
 
     <ul class="flex items-center">
+      @auth
       <li>
         <a href="/" class="p-3">Kristian Kristiansen</a>
       </li>
+      <li>
+        <a href="" class="p-3">Logout</a>
+      </li>
+      @endauth
+
+      @guest
       <li>
         <a href="" class="p-3">Login</a>
       </li>
@@ -45,9 +52,7 @@
         {{-- chain on in the route ->name('register') --}}
         <a href="{{ route('register') }}" class="p-3">Register</a>
       </li>
-      <li>
-        <a href="" class="p-3">Logout</a>
-      </li>
+      @endguest
     </ul>
   </nav>
   @yield('content')

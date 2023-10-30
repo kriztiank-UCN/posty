@@ -19,6 +19,9 @@ class RegisterController extends Controller
     // store method
     public function store(Request $request)
     {
+        // get the user email & password
+        // dd($request->only('email', 'password'));
+
         // validation
         // dd($request->email);
         $this->validate($request, [
@@ -37,8 +40,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
         // sign the user in
-        return redirect()->route('dashboard');
-        // redirect
+        auth()->attempt($request->only('email', 'password'));
 
+        // redirect
+        return redirect()->route('dashboard');
     }
 }

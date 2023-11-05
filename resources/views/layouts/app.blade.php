@@ -36,22 +36,26 @@
 
     <ul class="flex items-center">
       @auth
-      <li>
-        <a href="/" class="p-3">Kristian Kristiansen</a>
-      </li>
-      <li>
-        <a href="" class="p-3">Logout</a>
-      </li>
+        <li>
+          <a href="" class="p-3">{{ auth()->user()->name }}</a>
+        </li>
+        <li>
+          {{-- chain on in the Route::post ->name('logout') --}}
+          <form action="{{ route('logout') }}" method="post" class="p-3 inline">
+            @csrf
+            <button type="submit">Logout</button>
+          </form>
+        </li>
       @endauth
 
       @guest
-      <li>
-        <a href="{{route('login')}}" class="p-3">Login</a>
-      </li>
-      <li>
-        {{-- chain on in the route ->name('register') --}}
-        <a href="{{ route('register') }}" class="p-3">Register</a>
-      </li>
+        <li>
+          <a href="{{ route('login') }}" class="p-3">Login</a>
+        </li>
+        <li>
+          {{-- chain on in the Route::get ->name('register') --}}
+          <a href="{{ route('register') }}" class="p-3">Register</a>
+        </li>
       @endguest
     </ul>
   </nav>

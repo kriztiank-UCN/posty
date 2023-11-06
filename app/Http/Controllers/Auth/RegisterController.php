@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Hash;
 // class
 class RegisterController extends Controller
 {
+     // middleware - protected route guest
+     public function __construct()
+     {
+         $this->middleware(['guest']);
+     }    
+
     // index method
     public function index()
     {

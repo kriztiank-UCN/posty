@@ -13,10 +13,11 @@ class DashboardController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index( ) {
+    public function index()
+    {
         // were signed in when auth()->user() is returning an object
         // App\Models\User
-        // dd(auth()->user());
+        // dd(auth()->user()->posts);
 
         return view('dashboard');
     }

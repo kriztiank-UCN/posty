@@ -24,19 +24,23 @@
   <nav class="p-6 bg-white flex justify-between mb-6">
     <ul class="flex items-center">
       <li>
+        {{-- chain on in the Route::get ->name('home') --}}
         <a href="/" class="p-3">Home</a>
       </li>
       <li>
+        {{-- chain on in the Route::get ->name('dashboard') --}}
         <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
       </li>
       <li>
-        <a href="" class="p-3">Post</a>
+        {{-- chain on in the Route::get ->name('posts') --}}
+        <a href="{{ route('posts') }}" class="p-3">Posts</a>
       </li>
     </ul>
 
     <ul class="flex items-center">
       @auth
         <li>
+          {{-- shows user/name in nav when logged in --}}
           <a href="" class="p-3">{{ auth()->user()->name }}</a>
         </li>
         <li>
@@ -50,6 +54,7 @@
 
       @guest
         <li>
+          {{-- chain on in the Route::get ->name('login') --}}
           <a href="{{ route('login') }}" class="p-3">Login</a>
         </li>
         <li>

@@ -9,7 +9,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        // get all posts in a laravel collection
+        $posts = Post::get();
+
+        return view('posts.index', [
+            // send all post to posts.index view
+            'posts' => $posts
+        ]);
     }
 
     public function store(Request $request)

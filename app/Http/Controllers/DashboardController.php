@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,6 +19,9 @@ class DashboardController extends Controller
         // were signed in when auth()->user() is returning an object
         // App\Models\User
         // dd(auth()->user()->posts);
+
+
+        // dd(Post::find(1)->created_at->diffForHumans());
 
         return view('dashboard');
     }

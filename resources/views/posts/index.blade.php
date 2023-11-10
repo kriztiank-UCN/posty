@@ -31,22 +31,22 @@
         {{-- iterate through posts --}}
         @foreach ($posts as $post)
           <div class="mb-4">
-            <a href="" class="font-bold"> {{ $post->user->name }} </a> <span
+            {{-- Get users posts, get id with route model binding --}}
+            <a href=" {{ route('users.posts', $post->user) }} " class="font-bold"> {{ $post->user->name }} </a> <span
               class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
             <p class="mb-2">{{ $post->body }} </p>
 
             {{-- Delete post --}}
 
-              {{-- Delete post, get id with route model binding --}}
-              @can('delete', $post)
+            {{-- Delete post, get id with route model binding --}}
+            @can('delete', $post)
               <form action="{{ route('posts.destroy', $post) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="text-blue-500">Delete</button>
               </form>
-              @endcan
-
+            @endcan
 
             {{-- like unlike posts --}}
             <div class="flex items-center">

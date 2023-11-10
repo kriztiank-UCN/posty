@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -17,6 +18,8 @@ Route::get('/', function () {
 // The controller returns the view and logic.
 // The name of the route can be used in a link <a href="{{ route('dashboard') }}">Dashboard</a>
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Get users posts, route model binding, put in the name of the model {user} you want to look up
+Route::get('/users/{user}/posts', [UserPostController::class, 'index'])->name('users.posts');
 
 // logout
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');

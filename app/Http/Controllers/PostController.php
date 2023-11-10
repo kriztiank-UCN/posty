@@ -12,7 +12,7 @@ class PostController extends Controller
         // get all posts in a laravel collection
         // $posts = Post::get();
         // get all posts in a laravel collection with pagination
-        $posts = Post::paginate(2);
+        $posts = Post::with(['user', 'likes'])->paginate(20);
 
         // dd($posts);
 

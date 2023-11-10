@@ -36,6 +36,16 @@
 
             <p class="mb-2">{{ $post->body }} </p>
 
+            {{-- Delete post --}}
+            <div>
+              {{-- Delete post, get id with route model binding --}}
+              <form action="{{ route('posts.destroy', $post) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-blue-500">Delete</button>
+              </form>
+            </div>
+
             {{-- like unlike posts --}}
             <div class="flex items-center">
               @auth

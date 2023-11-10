@@ -12,7 +12,7 @@ class PostController extends Controller
         // get all posts in a laravel collection
         // $posts = Post::get();
         // get all posts in a laravel collection with pagination
-        $posts = Post::with(['user', 'likes'])->paginate(20);
+        $posts = Post::latest()->with(['user', 'likes'])->paginate(20);
 
         // dd($posts);
 
@@ -39,7 +39,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // dd($post);
-        // $this->authorize('delete', $post);
+        $this->authorize('delete', $post);
 
         $post->delete();
 

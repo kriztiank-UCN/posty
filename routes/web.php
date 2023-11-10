@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -35,3 +36,7 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 // Inherits ->name('posts'); stores the post in the database
 Route::post('/posts', [PostController::class, 'store']);
 
+// Like posts, route model binding, put in the name of the model {post} you want to look up
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
+// Delete unlike posts, route model binding, put in the name of the model {post} you want to look up
+Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
